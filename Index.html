@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project_3</title>
+    <style>
+        .contains{
+            box-sizing: border-box;
+            box-shadow: 5px rgb(46, 37, 37);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .container{
+            margin: 40px;
+            width: 350px;
+            height: 550px;
+            background: white;
+            border: 3px solid rgba(200, 195, 195, 0.925);
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border-radius: 0px;
+            box-shadow: 1px 1px 1px 4px rgba(241, 239, 239, 0.803);
+            }
+        .container2{
+            margin: 40px;
+            width: 350px;
+            height: 600px;
+            background: white;
+            border: 3px solid rgba(200, 195, 195, 0.925);
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border-radius: 0px;
+            box-shadow: 1px 1px 1px 4px rgba(241, 239, 239, 0.803);
+            }
+        .container3{
+            margin: 40px;
+            width: 350px;
+            height: 550px;
+            background: white;
+            border: 3px solid rgba(200, 195, 195, 0.925);
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border-radius: 0px;
+            box-shadow: 1px 1px 1px 4px rgba(241, 239, 239, 0.803);
+            position: sticky;
+            } 
+            .head{
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-weight: 900;
+            }
+            .para{
+                margin: 40px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-weight: bold;
+                font-size:inherit;
+                text-align: center;
+            }
+            .button:hover{
+                  background-color: aliceblue ;
+            }
+            .button{
+                width: 200px;
+                height: 40px;
+                border: 0px;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: medium;
+                cursor: pointer;
+                color: cornflowerblue;
+                bottom: 1px;
+                position: relative;
+            }
+    </style>
+</head>
+<body>
+    <div class="contains">
+    <div class="container">
+    <img class="box" src="flower.png" alt="" height="200"
+    width="350">
+    <br>
+    <h2 class="head">Delight Pink Flowers</h2>
+    <br>
+    <p class="para">The petals shimmer under soft sunlight, highlighting their translucent textures and subtle variations in pink.</p>
+    <br>
+   <input class="button" type="button" value="here's for more" onclick="sendData('Delight Pink Flowers')">
+    </div>
+    <div class="container2">
+    <img src="flower2.png" alt="" height="200" width="350">
+    <br>
+    <h2 class="head">Bright Pink Flowers</h2>
+    <br>
+    <p class="para">a stunning cluster of bright pink flowers with beautifully layered petals and vibrant orange-yellow centers. The soft, smooth petals overlap gracefully, creating a rich texture that draws the eye.</p>
+    <br>
+    <input class="button" type="button" value="here's for more" onclick="sendData('Bright Pink Flowers')">
+    </div>
+    <div class="container3">
+    <img src="flower3.png" alt="" height="200" width="350">
+    <br>
+    <h2 class="head">Daisy Flowers</h2>
+    <p class="para">Daisies are known for their simple yet elegant beauty, characterized by white petals surrounding a bright yellow or orange center.</p>
+    <br>
+   <input class="button" type="button" value="here's for more" onclick="sendData('Daisy Flowers')">
+    </div>
+    <div class="container">
+        <img class="box" src="flower.png" alt="" height="200"
+        width="350">
+        <br>
+        <h2 class="head">Delight Pink Flowers</h2>
+        <br>
+        <p class="para">The petals shimmer under soft sunlight, highlighting their translucent textures and subtle variations in pink.</p>
+        <br>
+        <input class="button" type="button" value="here's for more" onclick="sendData('Delight Pink Flowers')">
+        </div>
+        <div class="container2">
+        <img src="flower2.png" alt="" height="200" width="350">
+        <br>
+        <h2 class="head">Bright Pink Flowers</h2>
+        <br>
+        <p class="para">a stunning cluster of bright pink flowers with beautifully layered petals and vibrant orange-yellow centers. The soft, smooth petals overlap gracefully, creating a rich texture that draws the eye.</p>
+        <br>
+        <input class="button" type="button" value="here's for more">
+        </div>
+        <div class="container3">
+        <img src="flower3.png" alt="" height="200" width="350">
+        <br>
+        <h2 class="head">Daisy Flowers</h2>
+        <p class="para">Daisies are known for their simple yet elegant beauty, characterized by white petals surrounding a bright yellow or orange center.</p>
+        <br>
+        <input class="button" type="button" value="here's for more" onclick="sendData('Daisy Flowers')">
+        </div>
+    </div>
+    <script>
+function sendData(flowerName) {
+
+  fetch("https://oidklnousb.execute-api.ap-south-1.amazonaws.com/prod", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: "Website User",
+      email: "visitor@serverless.com",
+      message: flowerName
+    })
+  })
+  .then(response => response.text())
+  .then(data => {
+    alert("Data sent to AWS Lambda successfully!");
+  })
+  .catch(error => {
+    alert("Error calling API");
+  });
+}
+</script>
+</body>
+</html>
